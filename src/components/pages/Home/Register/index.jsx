@@ -1,8 +1,9 @@
 import React from 'react'
+import RegisterFormBlock from '../../../blocks/Register/RegisterForm';
 
 const RegisterPage = () => {
     return (
-        <>register</>
+        <><RegisterFormBlock /></>
     )
 }
 

@@ -47,10 +47,6 @@ const LoginFormBlock = () => {
         setErrorState(errorInitialState);
         await auth.signInWithCredentialsHandler(formData.email, formData.password);
     }
-    if (auth.user) return (<Stack>
-        <Typography variant='body2'>already logged in</Typography>
-        <Button onClick={auth.signOutHandler} variant='contained' color='error'>sign out</Button>
-    </Stack>)
     return (
         <Container maxWidth="xs">
             <Stack>
