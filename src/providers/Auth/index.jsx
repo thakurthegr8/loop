@@ -2,7 +2,8 @@ import React, { createContext, useContext, useState } from 'react'
 import { auth, mapErrorMessage, signInWithCredentials, signInWithGoogle, signOutLocal } from '../../services/firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import VerifyEmailBlock from '../../components/blocks/General/VerifyEmailBlock';
-import { CircularProgress, Container, Stack } from '@mui/material';
+import { CircularProgress } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext(
     {
@@ -19,10 +20,16 @@ export const useAuth = () => useContext(AuthContext)
 
 const AuthProvider = (props) => {
     const [user, loading, error] = useAuthState(auth);
+    const router = useNavigate();
     const [customError, setCustomError] = useState({ message: "" })
 
     const signInWithGoogleHandler = async () => {
-        await signInWithGoogle();
+        try {
+            await signInWithGoogle();
+            router("/");
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const signInWithCredentialsHandler = async (email, password) => {
@@ -31,7 +38,8 @@ const AuthProvider = (props) => {
             if (response.error) {
                 throw response.error;
             }
-            console.log(response.data);
+            router("/");
+
         } catch (error) {
             if (error instanceof Error)
                 setCustomError({ message: mapErrorMessage(error.message) })

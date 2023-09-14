@@ -46,6 +46,7 @@ const LoginFormBlock = () => {
         }
         setErrorState(errorInitialState);
         await auth.signInWithCredentialsHandler(formData.email, formData.password);
+
     }
     return (
         <Container maxWidth="xs">
