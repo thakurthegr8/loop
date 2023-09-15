@@ -7,7 +7,7 @@ import { useAuth } from '../../../../providers/Auth';
 const LandingNavbar = () => {
     const auth = useAuth();
     return (
-        <AppBar position='static' color='secondary' sx={{ background: "#fff", color: "#fff" }} >
+        <AppBar position='static' color='secondary' >
             <Container maxWidth="xl">
                 <Toolbar>
                     <Typography variant='h6' color="primary" >LOGO</Typography>

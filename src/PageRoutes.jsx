@@ -9,6 +9,8 @@ import { useAuth } from './providers/Auth'
 import DashboardLayout from './components/pages/Dashboard/Layout'
 import SettingsPage from './components/pages/Dashboard/Settings'
 import SettingsLayout from './components/pages/Dashboard/Settings/Layout'
+import SettingsAccountPage from './components/pages/Dashboard/Settings/Account'
+import SettingsPreferencesPage from './components/pages/Dashboard/Settings/Preferences'
 
 const PageRoutes = () => {
     const auth = useAuth();
@@ -26,6 +28,8 @@ const PageRoutes = () => {
                     <Route index element={<DashboardPage />} />
                     <Route path="settings" element={<SettingsLayout />}>
                         <Route index element={<SettingsPage />} />
+                        <Route path="account" element={<SettingsAccountPage />} />
+                        <Route path="preferences" element={<SettingsPreferencesPage />} />
                     </Route>
                 </Route>
             )}

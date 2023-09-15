@@ -7,6 +7,7 @@ import ItemsList from '../../../pages/Dashboard/Layout/ItemsList';
 import Logo from '../../../elements/general/Logo';
 import AccountAvatar from '../../../elements/auth/AccountAvatar';
 import { grey } from '@mui/material/colors';
+import { sidebarLinksList } from '../../../pages/Dashboard/Layout/Sidebar';
 
 
 const DashboardNavbar = () => {
@@ -16,14 +17,14 @@ const DashboardNavbar = () => {
         setDrawerVisibility(prev => !prev);
     }
     return (
-        <AppBar position='static' elevation={0} color='secondary' sx={{ background: "#fff", color: "#fff", borderBottom: `1px solid ${grey[300]}` }} >
+        <AppBar position='static' elevation={0} color='secondary' sx={{ borderBottom: `1px solid ${grey[300]}` }} >
             <Toolbar>
                 <Stack direction="row" sx={{ alignItems: "center", justifyContent: "center" }}>
                     <IconButton onClick={toggleDrawerVisibility} sx={{ display: { md: "none" } }}><Menu /></IconButton>
                     <Logo />
                 </Stack>
-                <Drawer sx={{ width: "50%" }} open={drawerVisibility} onClose={toggleDrawerVisibility} variant="temporary">
-                    <ItemsList />
+                <Drawer sx={{ width: "100vh",position:"relative" }} open={drawerVisibility} onClose={toggleDrawerVisibility} variant="temporary">
+                    <ItemsList itemsList={sidebarLinksList}/>
                 </Drawer>
                 <Stack sx={{ flexGrow: 1, justifyContent: "end", gap: 1 }} direction="horizontal">
                     {!auth?.user && <>

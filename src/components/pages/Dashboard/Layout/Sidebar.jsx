@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemsList from './ItemsList'
 import { Home, Settings } from '@mui/icons-material'
-const listItems = [
+export const sidebarLinksList = [
     {
         name: "Dashboard",
         link: "/",
@@ -24,7 +24,7 @@ const listItems = [
 ]
 const Sidebar = () => {
     return (
-        <ItemsList itemsList={listItems} />
+        <ItemsList itemsList={sidebarLinksList} />
     )
 }
 

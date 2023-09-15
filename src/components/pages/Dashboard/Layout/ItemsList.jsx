@@ -1,5 +1,5 @@
-import { ExpandLess, ExpandMore, Home, Settings } from '@mui/icons-material'
-import { Collapse, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
+import { ExpandLess, ExpandMore, Home, Person, Settings } from '@mui/icons-material'
+import { Collapse, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -14,10 +14,12 @@ const listItems = [
         link: "/settings",
         children: [{
             name: "Account",
+            Icon: () => <Person />,
             link: "/settings/account"
         },
         {
             name: "Preferences",
+            Icon: () => <Person />,
             link: "/settings/preferences"
         }
         ],
@@ -31,12 +33,10 @@ const CustomListItemCollapsible = (props) => {
         setOpen(prev => !prev);
     }
     return <>
-        <ListItemButton onClick={toggle}>
+        <ListItemButton onClick={toggle} LinkComponent={Link} to={props.linkItem.link}>
             <ListItemIcon><props.linkItem.Icon /></ListItemIcon>
-            <ListItemText primary={props.linkItem.name}>
-                {open ? <ExpandLess /> : <ExpandMore />}
-            </ListItemText>
-
+            <ListItemText primary={props.linkItem.name} />
+            {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse component="div" in={open} timeout="auto" unmountOnExit>
             <ItemsList itemsList={props.linkItem.children} />
@@ -45,7 +45,7 @@ const CustomListItemCollapsible = (props) => {
 }
 
 const ItemsList = (props) => {
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const [selectedIndex, setSelectedIndex] = useState(-1);
     return (
         <List disablePadding>
             {props.itemsList.map((item, index) => {
