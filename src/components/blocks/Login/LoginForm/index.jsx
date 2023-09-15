@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Joi from "joi";
 import { Alert, Button, Container, Divider, FormGroup, Stack, TextField, Typography } from '@mui/material'
 import { useAuth } from '../../../../providers/Auth';
+import { Link } from 'react-router-dom';
+import GoogleLoginButton from '../../../elements/auth/GoogleLoginBtn';
 
 const errorInitialState = {
     email: {
@@ -49,20 +51,23 @@ const LoginFormBlock = () => {
 
     }
     return (
-        <Container maxWidth="xs">
+        <Container maxWidth="xs" sx={{ pt: 8 }}>
             <Stack>
                 <form onSubmit={handleSubmit}>
                     <Stack spacing={3}>
-                        <Typography variant='h6' sx={{ textAlign: "center", fontWeight: "bold" }}>Sign in to continue</Typography>
+                        <Typography variant='h5' sx={{ textAlign: "center", fontWeight: "semibold" }}>Login to continue</Typography>
                         <FormGroup>
                             <Stack spacing={2}>
-                                <TextField onChange={handleChange} type="email" name="email" label="Email" value={formData.email} error={errorState.email.error} helperText={errorState.email.message} />
-                                <TextField onChange={handleChange} type="password" name="password" label="Password" value={formData.password} error={errorState.password.error} helperText={errorState.password.message} />
+                                <TextField onChange={handleChange} type="email" name="email" label="Email" value={formData.email} error={errorState.email.error} helperText={errorState.email.message} variant="filled" size='small'/>
+                                <TextField onChange={handleChange} type="password" name="password" label="Password" value={formData.password} error={errorState.password.error} helperText={errorState.password.message} variant="filled" size='small'/>
                                 <Button type='submit' variant='contained'>login</Button>
+                                <Link to="/register">
+                                    <Button type='button' variant='outlined' fullWidth>register</Button>
+                                </Link>
                             </Stack>
                         </FormGroup>
                         <Divider />
-                        <Button type="button" variant="outlined" onClick={auth.signInWithGoogleHandler}>continue with google</Button>
+                        <GoogleLoginButton/>
                     </Stack>
                 </form>
                 {auth.customError.message && <Alert severity='error'>{auth.customError.message}</Alert>}

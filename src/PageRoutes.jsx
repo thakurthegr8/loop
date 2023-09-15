@@ -7,6 +7,8 @@ import RegisterPage from './components/pages/Home/Register'
 import DashboardPage from './components/pages/Dashboard'
 import { useAuth } from './providers/Auth'
 import DashboardLayout from './components/pages/Dashboard/Layout'
+import SettingsPage from './components/pages/Dashboard/Settings'
+import SettingsLayout from './components/pages/Dashboard/Settings/Layout'
 
 const PageRoutes = () => {
     const auth = useAuth();
@@ -21,7 +23,10 @@ const PageRoutes = () => {
             )}
             {auth.user && (
                 <Route path="/" element={<DashboardLayout />}>
-                    <Route index element={<DashboardPage/>} />
+                    <Route index element={<DashboardPage />} />
+                    <Route path="settings" element={<SettingsLayout />}>
+                        <Route index element={<SettingsPage />} />
+                    </Route>
                 </Route>
             )}
             <Route path="*" element={<>404</>} />

@@ -3,6 +3,9 @@ import Joi from "joi";
 import { Alert, Button, Container, Divider, FormGroup, Stack, TextField, Typography } from '@mui/material'
 import { useAuth } from '../../../../providers/Auth';
 import useRegister from '../../../../hooks/auth/useRegister';
+import { Link } from 'react-router-dom';
+import { Google } from '@mui/icons-material';
+import GoogleLoginButton from '../../../elements/auth/GoogleLoginBtn';
 
 const errorInitialState = {
     email: {
@@ -57,21 +60,24 @@ const RegisterFormBlock = () => {
     }
 
     return (
-        <Container maxWidth="xs" sx={{ pt: 8}}>
+        <Container maxWidth="xs" sx={{ pt: 4 }}>
             <Stack>
                 <form onSubmit={handleSubmit}>
                     <Stack spacing={3}>
-                        <Typography variant='h6' sx={{ textAlign: "center", fontWeight: "bold" }}>Create an account</Typography>
+                    <Typography variant='h5' sx={{ textAlign: "center", fontWeight: "semibold" }}>Create an account</Typography>
                         <FormGroup>
                             <Stack spacing={2}>
-                                <TextField onChange={handleChange} type="email" name="email" label="Email" value={formData.email} error={errorState.email.error} helperText={errorState.email.message} />
-                                <TextField onChange={handleChange} type="password" name="password" label="Password" value={formData.password} error={errorState.password.error} helperText={errorState.password.message} />
-                                <TextField onChange={handleChange} type="password" name="conf_password" label="Confirm Password" value={formData.conf_password} error={errorState.conf_password.error} helperText={errorState.conf_password.message} />
+                                <TextField onChange={handleChange} type="email" name="email" label="Email" value={formData.email} error={errorState.email.error} helperText={errorState.email.message} variant="filled" size='small'/>
+                                <TextField onChange={handleChange} type="password" name="password" label="Password" value={formData.password} error={errorState.password.error} helperText={errorState.password.message} variant="filled" size='small'/>
+                                <TextField onChange={handleChange} type="password" name="conf_password" label="Confirm Password" value={formData.conf_password} error={errorState.conf_password.error} helperText={errorState.conf_password.message} variant="filled" size='small'/>
                                 <Button type='submit' variant='contained'>register</Button>
+                                <Link to="/login">
+                                    <Button type='button' variant='outlined' fullWidth>login</Button>
+                                </Link>
                             </Stack>
                         </FormGroup>
                         <Divider />
-                        <Button type="button" variant="outlined" onClick={auth.signInWithGoogleHandler}>register with google</Button>
+                        <GoogleLoginButton/>
                     </Stack>
                 </form>
 
