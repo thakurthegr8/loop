@@ -7,7 +7,6 @@ const SettingsLayout = () => {
         <Container sx={{ py: 2 }}>
             <Box>
                 <Typography variant='h5' fontWeight={600} py={1}>Settings</Typography>
-                <Divider />
                 <Outlet />
             </Box>
         </Container>

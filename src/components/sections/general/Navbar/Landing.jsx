@@ -7,14 +7,14 @@ import { useAuth } from '../../../../providers/Auth';
 const LandingNavbar = () => {
     const auth = useAuth();
     return (
-        <AppBar position='static' color='secondary' >
+        <AppBar position='static' color='default'>
             <Container maxWidth="xl">
                 <Toolbar>
                     <Typography variant='h6' color="primary" >LOGO</Typography>
                     <Stack sx={{ flexGrow: 1, justifyContent: "end", gap: 1 }} direction="horizontal">
                         {!auth?.user && <>
                             <Link to="/login">
-                                <Button variant='outlined'>login</Button>
+                                <Button variant='link'>login</Button>
                             </Link>
                             <Link to="/register">
                                 <Button variant='contained'>register</Button>

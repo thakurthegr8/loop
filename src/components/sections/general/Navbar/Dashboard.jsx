@@ -17,7 +17,7 @@ const DashboardNavbar = () => {
         setDrawerVisibility(prev => !prev);
     }
     return (
-        <AppBar position='static' elevation={0} color='secondary' sx={{ borderBottom: `1px solid ${grey[300]}` }} >
+        <AppBar position='static' color=''>
             <Toolbar>
                 <Stack direction="row" sx={{ alignItems: "center", justifyContent: "center" }}>
                     <IconButton onClick={toggleDrawerVisibility} sx={{ display: { md: "none" } }}><Menu /></IconButton>
