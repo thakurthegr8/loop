@@ -3,30 +3,6 @@ import { Collapse, IconButton, List, ListItemButton, ListItemIcon, ListItemText,
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const listItems = [
-    {
-        name: "Dashboard",
-        link: "/",
-        Icon: () => <Home />
-    },
-    {
-        name: "Settings",
-        link: "/settings",
-        children: [{
-            name: "Account",
-            Icon: () => <Person />,
-            link: "/settings/account"
-        },
-        {
-            name: "Preferences",
-            Icon: () => <Person />,
-            link: "/settings/preferences"
-        }
-        ],
-        Icon: () => <Settings />
-    }
-]
-
 const CustomListItemCollapsible = (props) => {
     const [open, setOpen] = useState(false)
     const toggle = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Outlet } from "react-router-dom";
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, Grid, Paper, Typography } from '@mui/material';
 import Sidebar from './Sidebar';
 import DashboardNavbar from '../../../sections/general/Navbar/Dashboard';
 import { grey } from "@mui/material/colors"

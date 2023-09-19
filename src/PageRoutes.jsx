@@ -11,6 +11,10 @@ import SettingsPage from './components/pages/Dashboard/Settings'
 import SettingsLayout from './components/pages/Dashboard/Settings/Layout'
 import SettingsAccountPage from './components/pages/Dashboard/Settings/Account'
 import SettingsPreferencesPage from './components/pages/Dashboard/Settings/Preferences'
+import NotesLayout from './components/pages/Dashboard/Notes/Layout'
+import NotesPage from './components/pages/Dashboard/Notes'
+import AddNotePage from './components/pages/Dashboard/Notes/AddNote'
+import UpdateNotePage from './components/pages/Dashboard/Notes/UpdateNote'
 
 const PageRoutes = () => {
     const auth = useAuth();
@@ -26,6 +30,11 @@ const PageRoutes = () => {
             {auth.user && (
                 <Route path="/" element={<DashboardLayout />}>
                     <Route index element={<DashboardPage />} />
+                    <Route path="notes" element={<NotesLayout />}>
+                        <Route index element={<NotesPage />} />
+                        <Route path="add-note" element={<AddNotePage />} />
+                        <Route path="update-note/:note_id" element={<UpdateNotePage />} />
+                    </Route>
                     <Route path="settings" element={<SettingsLayout />}>
                         <Route index element={<SettingsPage />} />
                         <Route path="account" element={<SettingsAccountPage />} />

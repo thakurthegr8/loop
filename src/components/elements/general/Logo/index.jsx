@@ -4,9 +4,9 @@ import React from 'react'
 
 const Logo = () => {
     return (<>
-        <Animation color='secondary' />
-        <Typography variant='body1' color="secondary" fontWeight={600}>
-            LOGO
+        <Animation color='default' />
+        <Typography variant='body1' color="default" fontWeight={600}>
+            Loop
         </Typography>
     </>
     )

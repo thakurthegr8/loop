@@ -2,12 +2,15 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import AuthProvider from "./providers/Auth";
 import PageRoutes from "./PageRoutes";
+import { NoteProvider } from "./providers/Notes";
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <PageRoutes />
+        <NoteProvider>
+          <PageRoutes />
+        </NoteProvider>
       </AuthProvider>
     </Router>
   );

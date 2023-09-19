@@ -1,11 +1,20 @@
 import React from 'react'
 import ItemsList from './ItemsList'
-import { Home, Settings } from '@mui/icons-material'
+import { Home, Note, Settings } from '@mui/icons-material'
 export const sidebarLinksList = [
     {
         name: "Dashboard",
         link: "/",
         Icon: () => <Home />
+    },
+    {
+        name: "Notes",
+        link: "/notes",
+        Icon: () => <Note />,
+        children: [{
+            name: "Add New Note",
+            link: "/notes/add-note"
+        }]
     },
     {
         name: "Settings",
