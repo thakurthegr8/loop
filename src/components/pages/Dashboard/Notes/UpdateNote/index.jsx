@@ -1,4 +1,4 @@
-import { Button, Stack, TextField, TextareaAutosize } from '@mui/material'
+import { Button, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
@@ -21,7 +21,8 @@ const UpdateNotePage = () => {
     return (
         <form onSubmit={onNoteSubmit}>
             <Stack spacing={4}>
-                <Stack direction="row" justifyContent="end">
+                <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }}>
+                    <Typography variant='h6'>Update note</Typography>
                     <Button variant='contained' type="submit">save</Button>
                 </Stack>
                 <TextField

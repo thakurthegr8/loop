@@ -13,7 +13,7 @@ export const sidebarLinksList = [
         Icon: () => <Note />,
         children: [{
             name: "Add New Note",
-            link: "/notes/add-note"
+            link: "/notes/add"
         }]
     },
     {

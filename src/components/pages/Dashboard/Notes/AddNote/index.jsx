@@ -1,4 +1,4 @@
-import { Button, Stack, TextField, TextareaAutosize } from '@mui/material'
+import { Button, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
@@ -15,13 +15,14 @@ const AddNotePage = () => {
     }
     const onNoteSubmit = (e) => {
         e.preventDefault();
-        notesCtx.addNote(currentNote);
+        notesCtx.addNote({ ...currentNote, createdAt: Date.now() });
         navigate("/notes")
     }
     return (
         <form onSubmit={onNoteSubmit}>
             <Stack spacing={4}>
-                <Stack direction="row" justifyContent="end">
+                <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{sm:"center"}}>
+                    <Typography variant='h6'>Add Note</Typography>
                     <Button variant='contained' type="submit">save</Button>
                 </Stack>
                 <TextField

@@ -10,7 +10,7 @@ const noteReducer = (state, action) => {
         case 'ADD_NOTE':
             return [...state, action.payload];
         case 'DELETE_NOTE':
-            return state.filter((note) => note.id !== action.payload);
+            return state.filter((note,index) => !Array.from(action.payload).includes(index));
         case 'UPDATE_NOTE':
             return state.map((note) =>
                 note.id === action.payload.id ? action.payload.note : note
@@ -30,8 +30,8 @@ export function NoteProvider({ children }) {
         dispatch({ type: 'ADD_NOTE', payload: newNote });
     };
 
-    const deleteNote = (noteId) => {
-        dispatch({ type: 'DELETE_NOTE', payload: noteId });
+    const deleteNote = (noteIds) => {
+        dispatch({ type: 'DELETE_NOTE', payload: noteIds });
     };
 
     const updateNote = (noteId, newNote) => {
@@ -54,7 +54,7 @@ export function NoteProvider({ children }) {
 export function useNote() {
     const context = useContext(NoteContext);
     if (!context) {
-        throw new Error('useNoteContext must be used within a NoteProvider');
+        throw new Error('useNote must be used within a NoteProvider');
     }
     return context;
 }

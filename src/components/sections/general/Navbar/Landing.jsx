@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import { AppBar, Avatar, Button, Container, Stack, Toolbar, Typography } from '@mui/material';
 import { useAuth } from '../../../../providers/Auth';
+import Logo from '../../../elements/general/Logo';
 
 
 const LandingNavbar = () => {
@@ -10,15 +11,11 @@ const LandingNavbar = () => {
         <AppBar position='static' color='default'>
             <Container maxWidth="xl">
                 <Toolbar>
-                    <Typography variant='h6' color="primary" >LOGO</Typography>
+                    <Logo/>
                     <Stack sx={{ flexGrow: 1, justifyContent: "end", gap: 1 }} direction="horizontal">
                         {!auth?.user && <>
-                            <Link to="/login">
-                                <Button variant='link'>login</Button>
-                            </Link>
-                            <Link to="/register">
-                                <Button variant='contained'>register</Button>
-                            </Link>
+                                <Button variant='link' LinkComponent={Link} to="/login">login</Button>
+                                <Button variant='contained' LinkComponent={Link} to="/register">register</Button>
                         </>}
                         {auth?.user && <> <Avatar src={auth.user?.photoURL} />
                             <Button variant='contained' color='error' onClick={auth.signOutHandler}>sign out</Button>

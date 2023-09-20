@@ -5,8 +5,8 @@ const HomePage = () => {
     return (
         <Container>
             <Stack mt={8}>
-                <Typography variant='h3' align='center' sx={{fontWeight:"bold"}}>The React firebase app</Typography>
-                <Typography variant='h6' align='center'>The next auth solution for react firebase</Typography>
+                <Typography variant='h3' align='center' sx={{ fontWeight: "bold" }}>Your all in one note taking app</Typography>
+                <Typography variant='h6' align='center'>Get all your notes at one place</Typography>
             </Stack>
         </Container>
     )

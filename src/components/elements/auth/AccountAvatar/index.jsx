@@ -33,7 +33,7 @@ const AccountAvatar = () => {
                     horizontal: 'right',
                 }}
             >
-                <Card sx={{ maxWidth: 600, width: 300 }}>
+                <Card sx={{ maxWidth: 600, width: 300 }} variant='outlined'>
                     <CardHeader
                         avatar={<Avatar src={auth.user?.photoURL} />}
                         title={<Typography variant='h6' fontWeight={600} sx={{ textTransform: "capitalize" }}>{auth.user?.displayName}</Typography>}

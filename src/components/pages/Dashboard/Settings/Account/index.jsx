@@ -7,13 +7,13 @@ const SettingsAccountPage = () => {
     return (
         <Stack spacing={2}>
             <Typography variant='h6' fontWeight={400}>Account</Typography>
-            <Card>
+            <Card variant='outlined'>
                 <CardHeader title={<Typography variant='h6' fontWeight={400}>Update user info</Typography>} />
                 <CardContent>
                     <ChangeAccountInfo />
                 </CardContent>
             </Card>
-            <Card>
+            <Card variant='outlined'>
                 <CardHeader title={<Typography variant='h6' fontWeight={400}>Update password</Typography>} />
                 <CardContent>
                     <ChangeAuthInfo />

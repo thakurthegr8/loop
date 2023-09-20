@@ -23,8 +23,8 @@ const SettingsPage = () => {
         <Grid container spacing={4} flexGrow={1}>
             {settingsTiles.map(item => <Grid item xs={6} key={item.title}>
                 <NavLink to={item.link} component={Link} style={{ textDecoration: "none" }}>
-                    <Card elevation={2}>
-                        <CardMedia>
+                    <Card variant="outlined">
+                        <CardMedia >
                             <Box sx={{ padding: 8, color: "#fff", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: item.color }}>
                                 <item.Icon />
                             </Box>
