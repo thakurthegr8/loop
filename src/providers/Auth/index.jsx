@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react'
 import { auth, mapErrorMessage, signInWithCredentials, signInWithGoogle, signOutLocal } from '../../services/firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import VerifyEmailBlock from '../../components/blocks/General/VerifyEmailBlock';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext(
@@ -49,7 +49,7 @@ const AuthProvider = (props) => {
         await signOutLocal();
     }
     if (loading) {
-        return <CircularProgress />
+        return <Stack width="100vw" height="100vh" alignItems="center" justifyContent="center"> <CircularProgress /></Stack>
     }
     if (user && !user.emailVerified) return <VerifyEmailBlock />
     return (

@@ -1,5 +1,6 @@
 import { ExpandLess, ExpandMore, Home, Person, Settings } from '@mui/icons-material'
 import { Collapse, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material'
+import { grey, yellow } from '@mui/material/colors'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -26,7 +27,7 @@ const ItemsList = (props) => {
         <List disablePadding>
             {props.itemsList.map((item, index) => {
                 if (!item?.children)
-                    return (<ListItemButton key={index} LinkComponent={Link} to={item.link} selected={selectedIndex === index} onClick={() => setSelectedIndex(index)}>
+                    return (<ListItemButton key={index} LinkComponent={Link} to={item.link} selected={selectedIndex === index} onClick={() => setSelectedIndex(index)} sx={{ borderTopRightRadius: 32, borderBottomRightRadius: 32 }}>
                         {item.Icon && <ListItemIcon>
                             <item.Icon />
                         </ListItemIcon>}

@@ -1,27 +1,30 @@
 import { Button, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
+import { useAuth } from '../../../../../providers/Auth';
+const initialState = { title: "", description: "" }
 
 const AddNotePage = () => {
     const navigate = useNavigate();
+    const auth = useAuth();
     const notesCtx = useNote();
-    const [currentNote, setNote] = useState({ id: notesCtx.notes.length, title: "", description: "" })
+    const [currentNote, setNote] = useState(initialState);
     const handleChangeNote = (e) => {
         setNote(prev => ({
             ...prev,
             [e.target.name]: e.target.value
         }))
     }
-    const onNoteSubmit = (e) => {
+    const onNoteSubmit = useCallback((e) => {
         e.preventDefault();
-        notesCtx.addNote({ ...currentNote, createdAt: Date.now() });
-        navigate("/notes")
-    }
+        notesCtx.addNote({ createdAt: Date.now(), uid: auth.user.uid, ...currentNote });
+        navigate("/notes");
+    }, [currentNote])
     return (
         <form onSubmit={onNoteSubmit}>
             <Stack spacing={4}>
-                <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{sm:"center"}}>
+                <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }}>
                     <Typography variant='h6'>Add Note</Typography>
                     <Button variant='contained' type="submit">save</Button>
                 </Stack>

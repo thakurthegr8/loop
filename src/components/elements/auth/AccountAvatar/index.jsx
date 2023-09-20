@@ -19,7 +19,6 @@ const AccountAvatar = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     if (auth.user == null) return null;
-    console.log(auth.user)
     return (
         <>
             <IconButton aria-describedby={id} variant="contained" onClick={handleClick}><Avatar src={auth.user?.photoURL} /></IconButton>

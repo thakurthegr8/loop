@@ -1,20 +1,26 @@
-import React, { createContext, useContext, useReducer } from 'react';
-import { tempData } from './tempData';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
+import db from '../../services/firebase/db';
+import { useAuth } from '../Auth';
+import { addDoc, collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
 
-// Step 1: Create a new context
+const notesCollection = collection(db, "notes");
+
 const NoteContext = createContext();
 
-// Step 2: Define the reducer function
-const noteReducer = (state, action) => {
+const noteReducer =  (state, action) => {
     switch (action.type) {
+        case 'INIT':
+            return action.payload
         case 'ADD_NOTE':
-            return [...state, action.payload];
+             addDoc(notesCollection, action.payload);
+            return state;
         case 'DELETE_NOTE':
-            return state.filter((note,index) => !Array.from(action.payload).includes(index));
+             deleteDoc(doc(db, "notes", action.payload.id))
+            return state
         case 'UPDATE_NOTE':
-            return state.map((note) =>
-                note.id === action.payload.id ? action.payload.note : note
-            );
+            const noteDoc = doc(db, "notes", action.payload.id);
+             updateDoc(noteDoc, action.payload.note)
+            return state;
         default:
             return state;
     }
@@ -23,22 +29,22 @@ const noteReducer = (state, action) => {
 // Step 3: Create a custom provider component
 export function NoteProvider({ children }) {
     // Step 4: Use useReducer to manage the notes state
-    const [notes, dispatch] = useReducer(noteReducer, tempData);
+    const [notes, dispatch] = useReducer(noteReducer, []);
+    const auth = useAuth();
 
     // Step 5: Create functions for adding, deleting, and updating notes using dispatch
     const addNote = (newNote) => {
         dispatch({ type: 'ADD_NOTE', payload: newNote });
     };
 
-    const deleteNote = (noteIds) => {
-        dispatch({ type: 'DELETE_NOTE', payload: noteIds });
+    const deleteNote = (noteId) => {
+        dispatch({ type: 'DELETE_NOTE', payload: { id: noteId } });
     };
 
     const updateNote = (noteId, newNote) => {
         dispatch({ type: 'UPDATE_NOTE', payload: { id: noteId, note: newNote } });
     };
 
-    // Step 6: Define the context value with state and functions
     const contextValue = {
         notes,
         addNote,
@@ -46,7 +52,25 @@ export function NoteProvider({ children }) {
         updateNote,
     };
 
-    // Step 7: Provide the context value to the components
+    useEffect(() => {
+        const fetchCollections = async () => {
+            try {
+
+                const queryCurrentUserCollection = query(notesCollection, where("uid", "==", auth.user.uid))
+                onSnapshot(queryCurrentUserCollection, (snapshot) => {
+                    const { docs } = snapshot;
+                    const notesData = docs.map(item => ({
+                        ...item.data(), id: item.id
+                    }))
+                    dispatch({ type: "INIT", payload: notesData })
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchCollections();
+        return () => fetchCollections()
+    }, []);
     return <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>;
 }
 

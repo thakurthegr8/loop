@@ -11,12 +11,12 @@ const ViewNotePage = () => {
     const navigate = useNavigate();
     const notesCtx = useNote();
     const [modalVisibility, setModalVisibility] = useState(false);
-    const [currentNote, setNote] = useState(notesCtx.notes?.[currentParams.note_id])
+    const [currentNote, setNote] = useState(notesCtx.notes.filter(item => item.id === currentParams.note_id)[0])
     const toggleModalVisibility = () => {
         setModalVisibility(prev => !prev);
     }
     const deleteNote = () => {
-        notesCtx.deleteNote([+currentParams.note_id]);
+        notesCtx.deleteNote(currentParams.note_id);
         navigate("/notes");
     }
     if (!currentNote) return <>no such note found</>
@@ -44,7 +44,7 @@ const ViewNotePage = () => {
                     </Stack>
                     <Divider />
                 </Stack>
-                <Typography sx={{wordBreak:"break-word"}}>{currentNote.description}</Typography>
+                <Typography sx={{ wordBreak: "break-word" }}>{currentNote.description}</Typography>
             </Stack>
         </>
     )

@@ -15,7 +15,7 @@ const DashboardLayout = (props) => {
                 <Grid item xs={3} sx={{ display: { xs: "none", md: "inline-grid" }, borderRight: `1px solid ${grey[900]}` }}>
                     <Sidebar />
                 </Grid>
-                <Grid component={Paper} item xs={12} sm={12} md={9} sx={{ overflowY: "scroll" }} height="90vh" paddingBottom={10}>
+                <Grid component={Paper} item xs={12} sm={12} md={9} sx={{ overflowY: "auto" }} height="90vh" paddingBottom={10}>
                     <Outlet />
                 </Grid>
             </Grid>

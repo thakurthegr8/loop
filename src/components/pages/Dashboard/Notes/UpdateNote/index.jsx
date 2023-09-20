@@ -1,11 +1,12 @@
 import { Button, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
 
 const UpdateNotePage = () => {
     const currentParams = useParams();
     const notesCtx = useNote();
+    const navigate = useNavigate();
     const [currentNote, setNote] = useState(notesCtx.notes.filter(item => item.id == currentParams.note_id)?.[0])
     if (!currentNote) return <>no such note found</>
     const handleChangeNote = (e) => {
@@ -17,6 +18,7 @@ const UpdateNotePage = () => {
     const onNoteSubmit = (e) => {
         e.preventDefault();
         notesCtx.updateNote(currentNote?.id, currentNote);
+        navigate("/notes");
     }
     return (
         <form onSubmit={onNoteSubmit}>

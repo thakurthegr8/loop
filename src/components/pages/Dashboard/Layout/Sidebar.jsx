@@ -1,6 +1,6 @@
 import React from 'react'
 import ItemsList from './ItemsList'
-import { Home, Note, Settings } from '@mui/icons-material'
+import { Add, Home, Note, Person, RoomPreferences, Settings } from '@mui/icons-material'
 export const sidebarLinksList = [
     {
         name: "Dashboard",
@@ -12,7 +12,8 @@ export const sidebarLinksList = [
         link: "/notes",
         Icon: () => <Note />,
         children: [{
-            name: "Add New Note",
+            name: "New Note",
+            Icon: () => <Add />,
             link: "/notes/add"
         }]
     },
@@ -21,11 +22,13 @@ export const sidebarLinksList = [
         link: "/settings",
         children: [{
             name: "Account",
-            link: "/settings/account"
+            link: "/settings/account",
+            Icon: () => <Person />
         },
         {
             name: "Preferences",
-            link: "/settings/preferences"
+            link: "/settings/preferences",
+            Icon: () => <RoomPreferences />
         }
         ],
         Icon: () => <Settings />

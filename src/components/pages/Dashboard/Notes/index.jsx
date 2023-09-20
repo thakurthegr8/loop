@@ -27,11 +27,11 @@ const NotesPage = () => {
                     </Stack>
                 </Grid>}
                 {notesCtx.notes.map((item, index) => <Grid key={index} xs={12} sm={6}>
-                    <NavLink to={`/notes/view/${index}`} component={Link} style={{ textDecoration: "none" }}>
+                    <NavLink to={`/notes/view/${item.id}`} component={Link} style={{ textDecoration: "none" }}>
                         <Card variant='outlined'>
                             <CardContent>
                                 <Stack spacing={1}>
-                                    <Typography variant='h5' fontWeight={600}>{item.title}</Typography>
+                                    <Typography variant='h5' fontWeight={600} noWrap>{item.title}</Typography>
                                     <Typography variant='body1' noWrap>{item.description}</Typography>
                                     <Divider />
                                     <Typography variant="body2">Created at {moment(item.createdAt).format("DD/MM/YYYY, hh:mm a")}</Typography>

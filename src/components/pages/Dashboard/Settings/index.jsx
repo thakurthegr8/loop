@@ -20,8 +20,8 @@ const settingsTiles = [{
 
 const SettingsPage = () => {
     return (
-        <Grid container spacing={4} flexGrow={1}>
-            {settingsTiles.map(item => <Grid item xs={6} key={item.title}>
+        <Grid container spacing={2} flexGrow={1}>
+            {settingsTiles.map(item => <Grid item xs={12} sm={6}  key={item.title}>
                 <NavLink to={item.link} component={Link} style={{ textDecoration: "none" }}>
                     <Card variant="outlined">
                         <CardMedia >
@@ -31,7 +31,7 @@ const SettingsPage = () => {
                         </CardMedia>
                         <CardContent sx={{ textDecoration: "none" }}>
                             <Typography fontWeight={600} variant='h6'>{item.title}</Typography>
-                            <Typography sx={{ color: grey[700] }}>{item.description}</Typography>
+                            <Typography sx={{ color: grey[500] }}>{item.description}</Typography>
                         </CardContent>
                     </Card>
                 </NavLink>
