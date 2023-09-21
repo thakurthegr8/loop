@@ -55,7 +55,7 @@ export function NoteProvider({ children }) {
     useEffect(() => {
         const fetchCollections = async () => {
             try {
-                const queryCurrentUserCollection = query(notesCollection, where("uid", "==", auth.user.uid))
+                const queryCurrentUserCollection = query(notesCollection, where("uid", "==", auth.user?.uid))
                 onSnapshot(queryCurrentUserCollection, (snapshot) => {
                     const { docs } = snapshot;
                     const notesData = docs.map(item => ({
