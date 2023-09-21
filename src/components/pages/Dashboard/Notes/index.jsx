@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Divider, Stack, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, Divider, Fab, IconButton, Stack, TextField, Typography } from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2";
 import React, { useEffect, useState } from 'react'
 import { Add } from '@mui/icons-material';
@@ -6,6 +6,8 @@ import { useNote } from '../../../../providers/Notes';
 import { Link, NavLink } from 'react-router-dom';
 import moment from "moment";
 import lodash from "lodash";
+import { BRAND_NAME } from '../../../../constants';
+import MetaDataProvider from '../../../../providers/Meta';
 
 const NotesPage = () => {
     const notesCtx = useNote();
@@ -26,13 +28,11 @@ const NotesPage = () => {
         setCurrentNotes(notesCtx.notes);
     }, [notesCtx.notes])
     return (
-        <Stack spacing={1}>
+        <Stack spacing={1} pb={10} position="relative">
+            <MetaDataProvider title={`${BRAND_NAME} | Notes`} />
             <Grid container spacing={2} flexGrow={1}>
                 <Grid item xs={12}>
-                    <Stack direction={{ sm: "row", xs: "column" }} justifyContent="end" spacing={2}>
-                        <TextField sx={{ flexGrow: 1 }} variant='standard' label="Search" onChange={onSearchQueryChange} onSubmit={onSearch} />
-                        <Button LinkComponent={Link} to="/notes/add" endIcon={<Add />} variant='contained'>Add New</Button>
-                    </Stack>
+                    <TextField fullWidth sx={{ flexGrow: 1 }} variant='standard' label="Search" onChange={onSearchQueryChange} onSubmit={onSearch} />
                 </Grid>
                 {currentNotes.length === 0 && <Grid item xs={12}>
                     <Stack justifyContent="center" alignItems="center" py={10}>
