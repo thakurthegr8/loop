@@ -6,7 +6,6 @@ import { useAuth } from '../../../../providers/Auth';
 import ItemsList from '../../../pages/Dashboard/Layout/ItemsList';
 import Logo from '../../../elements/general/Logo';
 import AccountAvatar from '../../../elements/auth/AccountAvatar';
-import { grey } from '@mui/material/colors';
 import { sidebarLinksList } from '../../../pages/Dashboard/Layout/Sidebar';
 import { Close } from '@mui/icons-material';
 

@@ -3,6 +3,8 @@ import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
 import { useAuth } from '../../../../../providers/Auth';
+import MetaDataProvider from '../../../../../providers/Meta';
+import { BRAND_NAME } from '../../../../../constants';
 const initialState = { title: "", description: "" }
 
 const AddNotePage = () => {
@@ -22,6 +24,8 @@ const AddNotePage = () => {
         navigate("/notes");
     }, [currentNote])
     return (
+        <>
+        <MetaDataProvider title={`${BRAND_NAME} | Add Note`}/>
         <form onSubmit={onNoteSubmit}>
             <Stack spacing={4}>
                 <Stack direction={{ xs: "column", sm: "row" }} justifyContent="space-between" alignItems={{ sm: "center" }}>
@@ -53,6 +57,7 @@ const AddNotePage = () => {
                     maxRows={20} minRows={16} />
             </Stack>
         </form>
+        </>
     )
 }
 

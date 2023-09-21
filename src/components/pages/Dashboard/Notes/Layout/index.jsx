@@ -1,5 +1,5 @@
-import { ChevronLeft } from '@mui/icons-material';
-import { Box, Container, Divider, IconButton, Stack, Typography } from '@mui/material';
+import {  ChevronLeft } from '@mui/icons-material';
+import { Container, IconButton, Stack, Typography } from '@mui/material';
 import React from 'react'
 import { Outlet, useNavigate } from 'react-router-dom';
 

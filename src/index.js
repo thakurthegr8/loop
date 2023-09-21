@@ -7,20 +7,9 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { blue, indigo } from "@mui/material/colors";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-const darkTheme = createTheme({
-  palette: {
-    mode: "light",
-    primary: indigo,
-    secondary: blue,
-  },
-});
 
-root.render(
-  <ThemeProvider theme={darkTheme}>
-    <CssBaseline />
-    <App />
-  </ThemeProvider>
-);
+
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

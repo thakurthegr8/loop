@@ -3,6 +3,8 @@ import { Box, Card, CardContent, CardMedia, Grid, Paper, Typography, listItemCla
 import { blue, grey, orange } from '@mui/material/colors'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { BRAND_NAME } from '../../../../constants'
+import MetaDataProvider from '../../../../providers/Meta'
 
 const settingsTiles = [{
     title: "Account",
@@ -20,23 +22,24 @@ const settingsTiles = [{
 
 const SettingsPage = () => {
     return (
-        <Grid container spacing={2} flexGrow={1}>
-            {settingsTiles.map(item => <Grid item xs={12} sm={6}  key={item.title}>
-                <NavLink to={item.link} component={Link} style={{ textDecoration: "none" }}>
-                    <Card variant="outlined">
-                        <CardMedia >
-                            <Box sx={{ padding: 8, color: "#fff", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: item.color }}>
-                                <item.Icon />
-                            </Box>
-                        </CardMedia>
-                        <CardContent sx={{ textDecoration: "none" }}>
-                            <Typography fontWeight={600} variant='h6'>{item.title}</Typography>
-                            <Typography sx={{ color: grey[500] }}>{item.description}</Typography>
-                        </CardContent>
-                    </Card>
-                </NavLink>
-            </Grid>)}
-        </Grid>
+        <><MetaDataProvider title={`${BRAND_NAME} | Settings`} />
+            <Grid container spacing={2} flexGrow={1}>
+                {settingsTiles.map(item => <Grid item xs={12} sm={6} key={item.title}>
+                    <NavLink to={item.link} component={Link} style={{ textDecoration: "none" }}>
+                        <Card variant="outlined">
+                            <CardMedia >
+                                <Box sx={{ padding: 8, color: "#fff", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: item.color }}>
+                                    <item.Icon />
+                                </Box>
+                            </CardMedia>
+                            <CardContent sx={{ textDecoration: "none" }}>
+                                <Typography fontWeight={600} variant='h6'>{item.title}</Typography>
+                                <Typography sx={{ color: grey[500] }}>{item.description}</Typography>
+                            </CardContent>
+                        </Card>
+                    </NavLink>
+                </Grid>)}
+            </Grid></>
     )
 }
 

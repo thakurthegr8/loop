@@ -5,6 +5,8 @@ import { useNote } from '../../../../../providers/Notes';
 import moment from 'moment';
 import { Delete, Edit } from '@mui/icons-material';
 import AppModal from '../../../../ui/Modal';
+import { BRAND_NAME } from '../../../../../constants';
+import MetaDataProvider from '../../../../../providers/Meta';
 
 const ViewNotePage = () => {
     const currentParams = useParams();
@@ -22,6 +24,7 @@ const ViewNotePage = () => {
     if (!currentNote) return <>no such note found</>
     return (
         <>
+            <MetaDataProvider title={`${BRAND_NAME} | Note | ${currentNote.title}`} />
             <Stack spacing={2}>
                 <Stack spacing={0.5}>
                     <Typography variant='h6'>{currentNote.title}</Typography>
