@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, Divider, Stack, TextField, Typography } from '@mui/material';
 import Grid from "@mui/material/Unstable_Grid2";
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Add } from '@mui/icons-material';
 import { useNote } from '../../../../providers/Notes';
 import { Link, NavLink } from 'react-router-dom';
@@ -22,6 +22,9 @@ const NotesPage = () => {
         });
         setCurrentNotes(data);
     }
+    useEffect(() => {
+        setCurrentNotes(notesCtx.notes);
+    }, [notesCtx.notes])
     return (
         <Stack spacing={1}>
             <Grid container spacing={2} flexGrow={1}>
