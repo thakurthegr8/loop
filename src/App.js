@@ -9,7 +9,6 @@ import AppThemeProvider from "./providers/Theme";
 
 const App = () => {
   return (
-    <AppThemeProvider>
       <Router>
         <AuthProvider>
           <NoteProvider>
@@ -17,7 +16,6 @@ const App = () => {
           </NoteProvider>
         </AuthProvider>
       </Router>
-    </AppThemeProvider>
   );
 };
 export default App;
