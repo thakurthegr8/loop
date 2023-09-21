@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { blue, indigo, yellow } from "@mui/material/colors";
+import { blue, indigo } from "@mui/material/colors";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const darkTheme = createTheme({

@@ -55,7 +55,6 @@ export function NoteProvider({ children }) {
     useEffect(() => {
         const fetchCollections = async () => {
             try {
-
                 const queryCurrentUserCollection = query(notesCollection, where("uid", "==", auth.user.uid))
                 onSnapshot(queryCurrentUserCollection, (snapshot) => {
                     const { docs } = snapshot;
@@ -69,7 +68,6 @@ export function NoteProvider({ children }) {
             }
         }
         fetchCollections();
-        return () => fetchCollections()
     }, []);
     return <NoteContext.Provider value={contextValue}>{children}</NoteContext.Provider>;
 }

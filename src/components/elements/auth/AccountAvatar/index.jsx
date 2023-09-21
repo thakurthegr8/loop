@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from '../../../../providers/Auth'
-import { Avatar, Button, Card, CardActions, CardHeader, Divider, IconButton, Popover, Typography } from '@mui/material';
-import { Settings } from '@mui/icons-material';
+import { Avatar, Button, Card, CardActions, CardHeader, Divider, IconButton, Popover, Stack, Tooltip, Typography } from '@mui/material';
+import { SettingsApplicationsRounded, SettingsOutlined } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 
 const AccountAvatar = () => {
@@ -21,7 +21,14 @@ const AccountAvatar = () => {
     if (auth.user == null) return null;
     return (
         <>
-            <IconButton aria-describedby={id} variant="contained" onClick={handleClick}><Avatar src={auth.user?.photoURL} /></IconButton>
+            <Stack direction="row" justifyContent="center" alignItems="center">
+                <Tooltip title="profile">
+                    <IconButton aria-describedby={id} variant="contained" onClick={handleClick}><Avatar src={auth.user?.photoURL} /></IconButton>
+                </Tooltip>
+                <Tooltip title="Settings">
+                    <IconButton LinkComponent={Link} to="/settings"><SettingsOutlined /></IconButton>
+                </Tooltip>
+            </Stack>
             <Popover
                 id={id}
                 open={open}
@@ -41,9 +48,6 @@ const AccountAvatar = () => {
                     </CardHeader>
                     <Divider />
                     <CardActions>
-                        <Link to="/settings">
-                            <IconButton><Settings /></IconButton>
-                        </Link>
                         <Button sx={{ flexGrow: 1 }} variant='outlined' color='error' onClick={auth.signOutHandler}>sign out</Button>
                     </CardActions>
                 </Card>

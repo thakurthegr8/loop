@@ -46,7 +46,8 @@ const AuthProvider = (props) => {
         }
     }
     const signOutHandler = async () => {
-        await signOutLocal();
+        await signOutLocal().then(res => router("/"));
+
     }
     if (loading) {
         return <Stack width="100vw" height="100vh" alignItems="center" justifyContent="center"> <CircularProgress /></Stack>

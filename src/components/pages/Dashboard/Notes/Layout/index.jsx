@@ -12,8 +12,8 @@ const NotesLayout = () => {
         <Container sx={{ py: 2 }}>
             <Stack>
                 <Stack direction="row" alignItems="center">
-                    <IconButton onClick={backToPreviousPageHandler} color='default'><ChevronLeft /></IconButton>
-                    <Typography variant='h5' fontWeight={600} py={1}>Notes</Typography>
+                    <IconButton onClick={backToPreviousPageHandler} color='default' prefix='notes'><ChevronLeft /></IconButton>
+                    <Typography variant='h6' fontWeight={600}>Notes</Typography>
                 </Stack>
                 <Outlet />
             </Stack>
