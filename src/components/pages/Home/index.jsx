@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const currentThemeCtx = useAppTheme();
-    useEffect(() => {
-        if (currentThemeCtx.theme === "dark") currentThemeCtx.toggleTheme()
-    }, [])
+    // useEffect(() => {
+    //     if (currentThemeCtx?.theme === "dark") currentThemeCtx?.toggleTheme()
+    // }, [])
     return (
         <Container maxWidth="md">
             <Stack mt={8} justifyContent="center" alignItems="center">
