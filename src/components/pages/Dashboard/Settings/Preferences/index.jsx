@@ -5,7 +5,7 @@ import MetaDataProvider from '../../../../../providers/Meta';
 import { BRAND_NAME } from '../../../../../constants';
 
 const SettingsPreferencesPage = () => {
-    const themeCtx = useAppTheme();
+    // const themeCtx = useAppTheme();
     return (
         <>
             <MetaDataProvider title={`${BRAND_NAME} | Settings | Preferences`} />
@@ -13,9 +13,9 @@ const SettingsPreferencesPage = () => {
                 <Typography variant='h6' fontWeight={400}>Your Preferences</Typography>
                 <Card>
                     <CardHeader subheader="Toggle your theme to light/dark" title="Theme" />
-                    <CardContent>
+                    {/* <CardContent>
                         <Switch checked={"dark" === themeCtx.theme} onChange={themeCtx.toggleTheme} title='mode' />
-                    </CardContent>
+                    </CardContent> */}
                 </Card>
             </Stack>
         </>
