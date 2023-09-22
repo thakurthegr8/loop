@@ -3,7 +3,16 @@ import { useEffect, useState } from "react";
 const useLocalStorage = (props) => {
   const [value, setValue] = useState(props.fallback);
   useEffect(() => {
-    setValue(localStorage.getItem(props.key));
+    if (props?.override) {
+      localStorage.setItem(props.key, value);
+    } else {
+      const localStorageItem = localStorage.getItem(props.key);
+      if (localStorageItem) {
+        setValue(localStorageItem);
+      } else {
+        localStorage.setItem(props.key, props.fallback);
+      }
+    }
   }, []);
   const setItem = (key, value) => {
     localStorage.setItem(key, value);
@@ -13,3 +22,7 @@ const useLocalStorage = (props) => {
 };
 
 export default useLocalStorage;
+
+useLocalStorage.defaultProps = {
+  fallback: "storage default value",
+};

@@ -1,5 +1,5 @@
 import { Alert, Box, Button, Divider, IconButton, Modal, Stack, TextField, TextareaAutosize, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
 import moment from 'moment';
@@ -7,13 +7,15 @@ import { Delete, Edit } from '@mui/icons-material';
 import AppModal from '../../../../ui/Modal';
 import { BRAND_NAME } from '../../../../../constants';
 import MetaDataProvider from '../../../../../providers/Meta';
+import Editor from '../../../../ui/Editor';
+
 
 const ViewNotePage = () => {
     const currentParams = useParams();
     const navigate = useNavigate();
     const notesCtx = useNote();
-    const [modalVisibility, setModalVisibility] = useState(false);
     const [currentNote, setNote] = useState(notesCtx.notes.filter(item => item.id === currentParams.note_id)[0])
+    const [modalVisibility, setModalVisibility] = useState(false);
     const toggleModalVisibility = () => {
         setModalVisibility(prev => !prev);
     }
@@ -46,8 +48,8 @@ const ViewNotePage = () => {
                         </Box>
                     </Stack>
                     <Divider />
+                    <Editor className="border-none p-0" defaultValue={currentNote?.content} editorProps={{ editable: () => false }} />
                 </Stack>
-                <Typography sx={{ wordBreak: "break-word" }}>{currentNote.description}</Typography>
             </Stack>
         </>
     )

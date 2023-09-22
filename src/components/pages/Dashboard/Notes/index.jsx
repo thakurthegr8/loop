@@ -50,7 +50,6 @@ const NotesPage = () => {
                             <CardContent>
                                 <Stack spacing={1}>
                                     <Typography variant='h5' fontWeight={600} noWrap>{item.title}</Typography>
-                                    <Typography variant='body1' noWrap>{item.description}</Typography>
                                     <Divider />
                                     <Typography variant="body2">Created at {moment(item.createdAt).format("DD/MM/YYYY, hh:mm a")}</Typography>
                                 </Stack>

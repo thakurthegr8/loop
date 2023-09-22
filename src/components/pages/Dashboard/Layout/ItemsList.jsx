@@ -28,7 +28,7 @@ const ItemsList = (props) => {
         <List disablePadding>
             {props.itemsList.map((item, index) => {
                 if (!item?.children)
-                    return (<ListItemButton key={index} LinkComponent={Link} to={item.link} selected={location.pathname === item.link} sx={{ borderTopRightRadius: 32, borderBottomRightRadius: 32 }}>
+                    return (<ListItemButton key={`dashboard_nav_item_${index}`} LinkComponent={Link} to={item.link} selected={location.pathname === item.link} sx={{ borderTopRightRadius: 32, borderBottomRightRadius: 32 }}>
                         {item.Icon && <ListItemIcon>
                             <item.Icon />
                         </ListItemIcon>}

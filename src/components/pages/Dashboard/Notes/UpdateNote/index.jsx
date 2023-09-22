@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useNote } from '../../../../../providers/Notes';
 import { BRAND_NAME } from '../../../../../constants';
 import MetaDataProvider from '../../../../../providers/Meta';
+import Editor from '../../../../ui/Editor';
 
 const UpdateNotePage = () => {
     const currentParams = useParams();
@@ -21,6 +22,9 @@ const UpdateNotePage = () => {
         e.preventDefault();
         notesCtx.updateNote(currentNote?.id, currentNote);
         navigate("/notes");
+    }
+    const onEditorUpdate = (editor) => {
+        setNote(prev => ({ ...prev, content: editor.getJSON() }))
     }
     return (
         <><MetaDataProvider title={`${BRAND_NAME} | Update Note`} />
@@ -41,20 +45,9 @@ const UpdateNotePage = () => {
                         defaultValue={currentNote.title}
                         value={currentNote.title}
                         onChange={handleChangeNote} />
-                    <TextField
-                        name="description"
-                        label="Description"
-                        type='text'
-                        variant='filled'
-                        fullWidth
-                        required
-                        multiline
-                        defaultValue={currentNote.description}
-                        value={currentNote.description}
-                        onChange={handleChangeNote}
-                        maxRows={20} minRows={16} />
                 </Stack>
             </form>
+            <Editor defaultValue={currentNote?.content} onUpdate={onEditorUpdate} />
         </>
     )
 }
