@@ -62,17 +62,22 @@ REACT_APP_FIREBASE_MESSAGING_SENDER_ID=""
 REACT_APP_FIREBASE_APP_ID=""
 REACT_APP_FIREBASE_MEASUREMENT_ID=""
 ```
+3. Run locally
+```bash
+npm start
+```
+4. Build the project
+```bash
+npm run build
+```
+
 
 ## Contribute
 
 If you'd like to contribute to the development of this app, please check out our [GitHub repository](https://github.com/your-username/rich-text-note-app) and follow our contribution guidelines.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Support
 
-If you have any questions or need assistance, please contact our support team at support@richtextnoteapp.com.
+If you have any questions or need assistance, please contact our support team at me@shortr.in.
 
 We hope you find this Rich Text Note-Taking App useful for organizing your ideas and notes in a visually rich and efficient way. Happy note-taking!
