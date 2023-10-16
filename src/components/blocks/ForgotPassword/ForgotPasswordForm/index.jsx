@@ -49,7 +49,9 @@ const ForgotPasswordFormBlock = () => {
             <Button type="submit" variant="contained" fullWidth>
               Reset Password
             </Button>
-            <Link to="/login"><span class='back-to-login'>Back to Login</span></Link>
+            <Typography variant="body2" sx={{'& a': { '&:hover': { textDecoration: 'underline',},}, }}>
+            <Link to="/login">Back to Login</Link>
+            </Typography>
           </Stack>
         </form>
       </Stack>
