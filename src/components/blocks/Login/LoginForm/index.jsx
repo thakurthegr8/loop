@@ -7,7 +7,7 @@ import GoogleLoginButton from '../../../elements/auth/GoogleLoginBtn';
 
 const errorInitialState = {
     email: {
-        error: false,
+        error: false,  
         message: "",
     },
     password: {
@@ -60,6 +60,7 @@ const LoginFormBlock = () => {
                             <Stack spacing={2}>
                                 <TextField onChange={handleChange} type="email" name="email" label="Email" value={formData.email} error={errorState.email.error} helperText={errorState.email.message} variant="filled" size='small'/>
                                 <TextField onChange={handleChange} type="password" name="password" label="Password" value={formData.password} error={errorState.password.error} helperText={errorState.password.message} variant="filled" size='small'/>
+                                <Link to="/ForgotPassword" ><span class='forgot-password'>Forgot Password?</span></Link> 
                                 <Button type='submit' variant='contained'>login</Button>
                                 <Link to="/register">
                                     <Button type='button' variant='outlined' fullWidth>register</Button>

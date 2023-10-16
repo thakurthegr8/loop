@@ -4,6 +4,7 @@ import HomeLayout from './components/pages/Home/Layout'
 import HomePage from './components/pages/Home'
 import LoginPage from './components/pages/Home/Login'
 import RegisterPage from './components/pages/Home/Register'
+import ForgotPasswordPage from './components/pages/Home/ForgotPassword'
 import DashboardPage from './components/pages/Dashboard'
 import { useAuth } from './providers/Auth'
 import DashboardLayout from './components/pages/Dashboard/Layout'
@@ -26,6 +27,7 @@ const PageRoutes = () => {
                     <Route index element={<HomePage />} />
                     <Route path="login" element={<LoginPage />} />
                     <Route path="register" element={<RegisterPage />} />
+                    <Route path="ForgotPassword" element={<ForgotPasswordPage />} />
                 </Route>
             )}
             {auth.user && (

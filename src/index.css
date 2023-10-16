@@ -5,3 +5,13 @@
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
+
+
+.back-to-login:hover,
+.forgot-password:hover {
+  color: #d32f2f;
+}
+
+.back-to-login {
+  color: #979FAF;
+}
